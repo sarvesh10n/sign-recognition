@@ -1,0 +1,27 @@
+%%just reading image
+a=imread('sign_image1.jpg');
+ figure;
+ imshow(a);
+
+%%detecting possible signs
+b=rgb2gray(a);
+
+bw=edge(b,'canny',0.2);
+ figure;
+ imshow(bw);
+
+ figure;
+ c=imfill(bw,'holes');
+ imshow(c);
+
+ Iout =bwareaopen(c, 3000);
+
+figure;
+imshow(Iout);
+
+boundaries = bwboundaries(Iout);
+
+figure;
+imshow(boundaries);
+
+imcrop();
