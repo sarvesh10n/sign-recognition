@@ -1,26 +1,25 @@
-%%just reading image
 clearvars;
-a=imread('sign_image6.jpg');
+original_image=imread('sign_image4.jpg');
  figure;
- imshow(a);
+ imshow(original_image);
 
 %%detecting possible signs
-b=rgb2gray(a);
+grey_image=rgb2gray(original_image);
 
-bw=edge(b,'canny',0.2);
+edged_image=edge(grey_image,'canny',0.2);
  figure;
- imshow(bw);
+ imshow(edged_image);
 
  figure;
- c=imfill(bw,'holes');
+ c=imfill(edged_image,'holes');
  imshow(c);
 
- Iout =bwareaopen(c, 3000);
+ Filled_image =bwareaopen(c, 3000);
 
 figure;
-imshow(Iout);
+imshow(Filled_image);
 
-boundary = bwboundaries(Iout);
+boundary = bwboundaries(Filled_image);
 edge = boundary{1};
-imshow(a); hold on; 
+imshow(original_image); hold on; 
 plot(edge(:,2),edge(:,1),'g','LineWidth',3);

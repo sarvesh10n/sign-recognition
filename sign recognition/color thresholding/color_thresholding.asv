@@ -1,0 +1,4 @@
+original_image=imread('sign_image4.jpg');
+ figure;
+ imshow(original_image);
+ b=redMaskFunction(original_image);
